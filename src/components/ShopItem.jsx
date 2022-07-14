@@ -1,5 +1,9 @@
+import { useContext } from "react";
+import { ShopContext } from "../Context";
 export default function ShopItem(props) {
-  const { id, name, price, quantity, Increment, Decrement } = props;
+  const { id, name, price, quantity } = props;
+  const { Increment, Decrement, RemoveOrderFromBasket } =
+    useContext(ShopContext);
   return (
     <li className="collection-item">
       {name} X {quantity} = {price * quantity} <b>$</b>
@@ -25,7 +29,7 @@ export default function ShopItem(props) {
         </i>
         <i
           className="material-icons close-btn"
-          onClick={() => props.RemoveOrderFromBasket(id)}
+          onClick={() => RemoveOrderFromBasket(id)}
         >
           close
         </i>
